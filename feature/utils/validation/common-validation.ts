@@ -48,6 +48,7 @@ export const signAppSchema = yup
       .bool()
       .required('You need to agree with the terms&conditions')
       .oneOf([true], 'You need to agree with the terms&conditions'),
+    country: yup.string().required('Input your country'),
   })
   .concat(schemaEmailValidation)
   .concat(schemaPasswordValidation)

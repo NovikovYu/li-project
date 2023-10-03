@@ -5,6 +5,7 @@ import 'react-phone-input-2/lib/material.css';
 import { yupResolver } from '@hookform/resolvers/yup';
 import {
   Controller,
+  Resolver,
   SubmitHandler,
   useForm,
   useFormState,
@@ -80,6 +81,8 @@ const SignUpForm = ({ handleCloseSignUpModal, isMobile }: Props) => {
   };
   const [countryName, setCountryName] = React.useState('');
   const [isLoading, setIsLoading] = React.useState(false);
+
+  // const resolver: Resolver<SignUpFormTypes> = yupResolver(signAppSchema);
 
   const { handleSubmit, control, setError } = useForm<SignUpFormTypes>({
     mode: 'onChange',
