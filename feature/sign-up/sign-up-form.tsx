@@ -1,14 +1,14 @@
-import * as React from "react";
-import { useRouter } from "next/router";
-import "react-phone-number-input/style.css";
-import "react-phone-input-2/lib/material.css";
-import { yupResolver } from "@hookform/resolvers/yup";
+import * as React from 'react';
+import { useRouter } from 'next/router';
+import 'react-phone-number-input/style.css';
+import 'react-phone-input-2/lib/material.css';
+import { yupResolver } from '@hookform/resolvers/yup';
 import {
   Controller,
   SubmitHandler,
   useForm,
   useFormState,
-} from "react-hook-form";
+} from 'react-hook-form';
 import {
   Box,
   Checkbox,
@@ -17,8 +17,8 @@ import {
   InputAdornment,
   InputLabel,
   OutlinedInput,
-} from "@mui/material";
-import { Visibility, VisibilityOff } from "@mui/icons-material";
+} from '@mui/material';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
 import {
   AcceptedHelperTextRestyled,
   CloseIconButtonRestyled,
@@ -33,9 +33,9 @@ import {
   PhoneInputRestyled,
   SignUpBoxFormRestyled,
   SignUpBoxRestyled,
-} from "./style-sign-up-form";
-import { signAppSchema } from "../utils/validation/common-validation";
-import { SignInLoadingButtonRestyled } from "../sign-in/style-sign-in";
+} from './style-sign-up-form';
+import { signAppSchema } from '../utils/validation/common-validation';
+import { SignInLoadingButtonRestyled } from '../sign-in/style-sign-in';
 
 type SignUpFormTypes = {
   first_name: string;
@@ -60,13 +60,13 @@ interface Props {
   isMobile: boolean;
 }
 
-const EXCLUDE_COUNTRIES = ["ru", "by"];
+const EXCLUDE_COUNTRIES = ['ru', 'by'];
 
-const axios = require("axios");
+const axios = require('axios');
 
 const SignUpForm = ({ handleCloseSignUpModal, isMobile }: Props) => {
-  const InputSize = isMobile ? "small" : "medium";
-  const ButtonSize = isMobile ? "small" : "large";
+  const InputSize = isMobile ? 'small' : 'medium';
+  const ButtonSize = isMobile ? 'small' : 'large';
   const router = useRouter();
   const [showPassword, setShowPassword] = React.useState(false);
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -74,15 +74,15 @@ const SignUpForm = ({ handleCloseSignUpModal, isMobile }: Props) => {
   const handleClickShowRepeatPassword = () =>
     setShowRepeatPassword((show) => !show);
   const handleMouseDownPassword = (
-    event: React.MouseEvent<HTMLButtonElement>
+    event: React.MouseEvent<HTMLButtonElement>,
   ) => {
     event.preventDefault();
   };
-  const [countryName, setCountryName] = React.useState("");
+  const [countryName, setCountryName] = React.useState('');
   const [isLoading, setIsLoading] = React.useState(false);
 
   const { handleSubmit, control, setError } = useForm<SignUpFormTypes>({
-    mode: "onChange",
+    mode: 'onChange',
     resolver: yupResolver(signAppSchema),
     defaultValues: {
       isAccepted: false,
@@ -97,7 +97,7 @@ const SignUpForm = ({ handleCloseSignUpModal, isMobile }: Props) => {
     setIsLoading(true);
 
     try {
-      const response = await axios.post(process.env.BASE_DEV_URL + "signup/", {
+      const response = await axios.post(process.env.BASE_DEV_URL + 'signup/', {
         password: userData.password,
         email: userData.email,
         first_name: userData.first_name,
@@ -114,18 +114,18 @@ const SignUpForm = ({ handleCloseSignUpModal, isMobile }: Props) => {
         errorsNamesList.forEach((errorPath) => {
           setError(
             errorPath as
-              | "first_name"
-              | "last_name"
-              | "phone_number"
-              | "isAccepted"
-              | "email"
-              | "password"
-              | "repeatPassword"
-              | "country"
+              | 'first_name'
+              | 'last_name'
+              | 'phone_number'
+              | 'isAccepted'
+              | 'email'
+              | 'password'
+              | 'repeatPassword'
+              | 'country'
               | `root.${string}`
-              | "root",
-            { type: "manual", message: errorsData[errorPath][0] },
-            { shouldFocus: true }
+              | 'root',
+            { type: 'manual', message: errorsData[errorPath][0] },
+            { shouldFocus: true },
           );
         });
       } catch (error) {
@@ -143,7 +143,7 @@ const SignUpForm = ({ handleCloseSignUpModal, isMobile }: Props) => {
 
       if (signUpResult?.data?.id) {
         handleCloseSignUpModal();
-        router.push("/confirm-email");
+        router.push('/confirm-email');
       }
     } else errors;
   };
@@ -174,7 +174,7 @@ const SignUpForm = ({ handleCloseSignUpModal, isMobile }: Props) => {
                 label="First Name"
                 size={InputSize}
                 variant="outlined"
-                value={field.value || ""}
+                value={field.value || ''}
                 error={!!fieldState.error?.message}
                 helperText={fieldState.error?.message}
                 onChange={field.onChange}
@@ -193,7 +193,7 @@ const SignUpForm = ({ handleCloseSignUpModal, isMobile }: Props) => {
                 variant="outlined"
                 error={!!fieldState.error?.message}
                 helperText={fieldState.error?.message}
-                value={field.value || ""}
+                value={field.value || ''}
                 onChange={field.onChange}
               />
             )}
@@ -211,7 +211,7 @@ const SignUpForm = ({ handleCloseSignUpModal, isMobile }: Props) => {
               variant="outlined"
               error={!!fieldState.error?.message}
               helperText={fieldState.error?.message}
-              value={field.value || ""}
+              value={field.value || ''}
               onChange={field.onChange}
             />
           )}
@@ -223,7 +223,7 @@ const SignUpForm = ({ handleCloseSignUpModal, isMobile }: Props) => {
             const { value: fieldValue, onChange } = field;
 
             const handleCountryChange = (value: string, country: Country) => {
-              setCountryName(country?.name || "");
+              setCountryName(country?.name || '');
               onChange(value);
             };
             return (
@@ -236,10 +236,10 @@ const SignUpForm = ({ handleCloseSignUpModal, isMobile }: Props) => {
                   defaultErrorMessage={fieldState.error?.message}
                   value={fieldValue}
                   inputClass={
-                    !!fieldState.error?.message ? "invalid-number" : ""
+                    !!fieldState.error?.message ? 'invalid-number' : ''
                   }
                   onChange={handleCountryChange}
-                  inputStyle={{ width: "100%" }}
+                  inputStyle={{ width: '100%' }}
                 />
                 <PhoneHelperTextRestyled>
                   {fieldState.error?.message}
@@ -264,9 +264,9 @@ const SignUpForm = ({ handleCloseSignUpModal, isMobile }: Props) => {
                 <OutlinedInput
                   id="reg-form-password"
                   label="Password"
-                  type={showPassword ? "text" : "password"}
+                  type={showPassword ? 'text' : 'password'}
                   autoComplete="current-password"
-                  value={fieldValue || ""}
+                  value={fieldValue || ''}
                   onChange={onChange}
                   endAdornment={
                     <InputAdornment position="end">
@@ -279,11 +279,11 @@ const SignUpForm = ({ handleCloseSignUpModal, isMobile }: Props) => {
                       >
                         {showPassword ? (
                           <VisibilityOff
-                            fontSize={isMobile ? "small" : "medium"}
+                            fontSize={isMobile ? 'small' : 'medium'}
                           />
                         ) : (
                           <Visibility
-                            fontSize={isMobile ? "small" : "medium"}
+                            fontSize={isMobile ? 'small' : 'medium'}
                           />
                         )}
                       </IconButton>
@@ -319,9 +319,9 @@ const SignUpForm = ({ handleCloseSignUpModal, isMobile }: Props) => {
                 <OutlinedInput
                   id="reg-form-repeat-password"
                   label="Repeat Password"
-                  type={showRepeatPassword ? "text" : "password"}
+                  type={showRepeatPassword ? 'text' : 'password'}
                   autoComplete="current-repeat-password"
-                  value={fieldValue || ""}
+                  value={fieldValue || ''}
                   onChange={onChange}
                   endAdornment={
                     <InputAdornment position="end">
@@ -333,11 +333,11 @@ const SignUpForm = ({ handleCloseSignUpModal, isMobile }: Props) => {
                       >
                         {showRepeatPassword ? (
                           <VisibilityOff
-                            fontSize={isMobile ? "small" : "medium"}
+                            fontSize={isMobile ? 'small' : 'medium'}
                           />
                         ) : (
                           <Visibility
-                            fontSize={isMobile ? "small" : "medium"}
+                            fontSize={isMobile ? 'small' : 'medium'}
                           />
                         )}
                       </IconButton>
@@ -366,7 +366,7 @@ const SignUpForm = ({ handleCloseSignUpModal, isMobile }: Props) => {
                       checked={fieldValue}
                       onChange={onChange}
                       id="reg-form-checkbox"
-                      color={fieldState.error ? "error" : "secondary"}
+                      color={fieldState.error ? 'error' : 'secondary'}
                       size={InputSize}
                     />
                   }
