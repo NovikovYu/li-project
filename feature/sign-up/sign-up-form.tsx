@@ -82,8 +82,6 @@ const SignUpForm = ({ handleCloseSignUpModal, isMobile }: Props) => {
   const [countryName, setCountryName] = React.useState('');
   const [isLoading, setIsLoading] = React.useState(false);
 
-  // const resolver: Resolver<SignUpFormTypes> = yupResolver(signAppSchema);
-
   const { handleSubmit, control, setError } = useForm<SignUpFormTypes>({
     mode: 'onChange',
     resolver: yupResolver(signAppSchema),
@@ -109,11 +107,11 @@ const SignUpForm = ({ handleCloseSignUpModal, isMobile }: Props) => {
         phone_number: `+${userData.phone_number}`,
       });
       return response;
-    } catch (error) {
-      const errorsData = error.response.data;
-      const errorsNamesList = Object.keys(errorsData);
-
+    } catch (error: any) {
       try {
+        const errorsData = error.response?.data || {};
+        const errorsNamesList = Object.keys(errorsData);
+
         errorsNamesList.forEach((errorPath) => {
           setError(
             errorPath as
