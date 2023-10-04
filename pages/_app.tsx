@@ -131,7 +131,10 @@ const theme = createTheme({
 });
 
 // закладка - билд
+// было
 // export default function App({ Component, pageProps }: AppProps) {
+// "@types/react": "18.2.0",
+// "@types/react-dom": "18.2.1",
 const App: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <Provider store={store}>
