@@ -30,7 +30,9 @@ export default function StartTheQuestionnaire() {
 
   return (
     <Layout pageTitle={'Lintu - start the questionnaire page'}>
-      <MainBox component="main">
+      {/* закладка - билд */}
+      {/* <MainBox component="main"> */}
+      <MainBox>
         <Container sx={{ maxWidth: '808px' }} maxWidth={false}>
           <InfoPageContent
             imgSrc={'/business-product-planning-and-research.png'}

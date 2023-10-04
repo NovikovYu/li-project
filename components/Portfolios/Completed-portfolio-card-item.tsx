@@ -27,7 +27,9 @@ const CompletedPortfolioCardItem: FC<IProps> = ({
   link,
 }) => {
   return (
-    <PortfolioCardItem component="li">
+    // закладка - билд
+    // <PortfolioCardItem component="li">
+    <PortfolioCardItem>
       <PortfolioCardNumbersWrapper>
         <PortfolioCardNumbersColumnLeft>
           <PortfolioCardTitle>

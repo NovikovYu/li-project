@@ -156,7 +156,9 @@ export default function Survey() {
 
   return (
     <Layout pageTitle={'Lintu - survey page'}>
-      <MainBox component="main">
+      {/* закладка - билд */}
+      {/* <MainBox component="main"> */}
+      <MainBox>
         <Container sx={{ maxWidth: '808px' }} maxWidth={false}>
           <SurvayWrapper>
             <SurvayPartTitleWrapper>

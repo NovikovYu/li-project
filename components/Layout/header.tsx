@@ -57,9 +57,13 @@ function Header({ handleOpenSignInModal }: Props) {
 
             <HeaderWrapper>
               <Box component="nav">
-                <NavigationUlItem component="ul">
+                {/* закладка - билд */}
+                {/* <NavigationUlItem component="ul"> */}
+                <NavigationUlItem>
                   {pages.map((page) => (
-                    <NavigationListItem component="li" key={page}>
+                    // закладка - билд
+                    // <NavigationListItem component="li" key={page}>
+                    <NavigationListItem key={page}>
                       <MenuButtonRestyled href={`/${page.toLowerCase()}`}>
                         {page}
                       </MenuButtonRestyled>

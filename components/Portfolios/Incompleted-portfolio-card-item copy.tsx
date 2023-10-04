@@ -19,7 +19,9 @@ const IncompletedPortfolioCardItem: FC<IProps> = ({ id }) => {
   };
 
   return (
-    <PortfolioCardItem component="li">
+    // закладка - билд
+    // <PortfolioCardItem component="li">
+    <PortfolioCardItem>
       <PortfolioCardTitle variant="h2">
         Portfolio is incomplete
       </PortfolioCardTitle>

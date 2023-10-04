@@ -107,8 +107,10 @@ const SignUpForm = ({ handleCloseSignUpModal, isMobile }: Props) => {
         phone_number: `+${userData.phone_number}`,
       });
       return response;
+      // закладка - билд
     } catch (error: any) {
       try {
+        // закладка - билд
         const errorsData = error.response?.data || {};
         const errorsNamesList = Object.keys(errorsData);
 

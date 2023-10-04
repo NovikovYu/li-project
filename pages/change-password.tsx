@@ -76,6 +76,8 @@ function ChangePasswordPage() {
       <ChangePasswordFormBox>
         <ChangePasswordHeading>Change password</ChangePasswordHeading>
         <Box
+          // закладка - билд
+          // component="form"
           component="form"
           autoComplete="off"
           onSubmit={handleSubmit(onSubmit)}

@@ -83,7 +83,9 @@ export default function Portfolios() {
 
   return (
     <Layout pageTitle={'Lintu - portfolios page'}>
-      <MainBox component="main">
+      {/* закладка - билд */}
+      {/* <MainBox component="main"> */}
+      <MainBox>
         <Container sx={{ maxWidth: '808px' }} maxWidth={false}>
           <PortfoliosTitle variant="h1">Portfolios</PortfoliosTitle>
 
@@ -92,8 +94,11 @@ export default function Portfolios() {
             them
           </PortfoliosSubtitle>
 
-          <PortfolioCardsList component="ul">
-            <PortfolioCardItem component="li">
+          {/* закладка - билд */}
+          {/* <PortfolioCardsList component="ul">
+            <PortfolioCardItem component="li"> */}
+          <PortfolioCardsList>
+            <PortfolioCardItem>
               <PortfolioCardTitle variant="h2">
                 Create new portfolio
               </PortfolioCardTitle>

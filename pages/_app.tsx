@@ -4,6 +4,7 @@ import type { AppProps } from 'next/app';
 import { store } from '../store/store';
 import '@/styles/globals.css';
 import 'typeface-inter';
+// import type { NextPage } from 'next';
 
 const theme = createTheme({
   palette: {
@@ -129,11 +130,13 @@ const theme = createTheme({
   },
 });
 
+// закладка - билд
+// export default function App({ Component, pageProps }: AppProps) {
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
+        {Component ? <Component {...pageProps} /> : null}
       </ThemeProvider>
     </Provider>
   );
