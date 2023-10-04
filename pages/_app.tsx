@@ -132,14 +132,14 @@ const theme = createTheme({
 
 // закладка - билд
 // export default function App({ Component, pageProps }: AppProps) {
-export default function App({ Component, pageProps }: AppProps) {
+const App: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <>
-          <Component {...pageProps} />
-        </>
+        <Component {...pageProps} />
       </ThemeProvider>
     </Provider>
   );
-}
+};
+
+export default App;
